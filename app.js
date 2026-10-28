@@ -70,6 +70,6 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden&&session?.s
 window.addEventListener('beforeunload',e=>{if(session&&session.state!=='finished'){e.preventDefault();e.returnValue='';}});
 setInterval(()=>{if(session?.state==='running'&&!session.demo&&Date.now()-lastSignal>30000)pause('超過 30 秒沒有 GPS 更新，已自動暫停。請檢查定位後按繼續。');render();},1000);
 renderHistory();renderCheckInStatus();render();if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
-renderHistory();renderCheckInStatus();render();renderRpg(true);if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+renderRpg(true);
 
 document.querySelectorAll('.sidenav a[href^="#"]').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('.sidenav a').forEach(n=>n.classList.toggle('active',n===a));document.querySelector('.breadcrumb strong').textContent=a.textContent.trim();}));
